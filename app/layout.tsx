@@ -33,10 +33,9 @@ export default function RootLayout({
           geistMono.variable
         )}
       >
-        <Navbar/>
+        <Navbar />
         {children}
       </body>
     </html>
   );
 }
-
