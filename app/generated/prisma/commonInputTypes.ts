@@ -110,6 +110,48 @@ export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDateTimeNullableFilter<$PrismaModel>
 }
 
+export type EnumUploadStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.UploadStatus | Prisma.EnumUploadStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.UploadStatus[] | Prisma.ListEnumUploadStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.UploadStatus[] | Prisma.ListEnumUploadStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumUploadStatusFilter<$PrismaModel> | $Enums.UploadStatus
+}
+
+export type DateTimeFilter<$PrismaModel = never> = {
+  equals?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
+  in?: Date[] | string[] | Prisma.ListDateTimeFieldRefInput<$PrismaModel>
+  notIn?: Date[] | string[] | Prisma.ListDateTimeFieldRefInput<$PrismaModel>
+  lt?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
+  lte?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
+  gt?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
+  gte?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedDateTimeFilter<$PrismaModel> | Date | string
+}
+
+export type EnumUploadStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.UploadStatus | Prisma.EnumUploadStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.UploadStatus[] | Prisma.ListEnumUploadStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.UploadStatus[] | Prisma.ListEnumUploadStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumUploadStatusWithAggregatesFilter<$PrismaModel> | $Enums.UploadStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumUploadStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumUploadStatusFilter<$PrismaModel>
+}
+
+export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
+  in?: Date[] | string[] | Prisma.ListDateTimeFieldRefInput<$PrismaModel>
+  notIn?: Date[] | string[] | Prisma.ListDateTimeFieldRefInput<$PrismaModel>
+  lt?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
+  lte?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
+  gt?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
+  gte?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedDateTimeFilter<$PrismaModel>
+  _max?: Prisma.NestedDateTimeFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -217,6 +259,48 @@ export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
   _min?: Prisma.NestedDateTimeNullableFilter<$PrismaModel>
   _max?: Prisma.NestedDateTimeNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumUploadStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.UploadStatus | Prisma.EnumUploadStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.UploadStatus[] | Prisma.ListEnumUploadStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.UploadStatus[] | Prisma.ListEnumUploadStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumUploadStatusFilter<$PrismaModel> | $Enums.UploadStatus
+}
+
+export type NestedDateTimeFilter<$PrismaModel = never> = {
+  equals?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
+  in?: Date[] | string[] | Prisma.ListDateTimeFieldRefInput<$PrismaModel>
+  notIn?: Date[] | string[] | Prisma.ListDateTimeFieldRefInput<$PrismaModel>
+  lt?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
+  lte?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
+  gt?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
+  gte?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedDateTimeFilter<$PrismaModel> | Date | string
+}
+
+export type NestedEnumUploadStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.UploadStatus | Prisma.EnumUploadStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.UploadStatus[] | Prisma.ListEnumUploadStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.UploadStatus[] | Prisma.ListEnumUploadStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumUploadStatusWithAggregatesFilter<$PrismaModel> | $Enums.UploadStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumUploadStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumUploadStatusFilter<$PrismaModel>
+}
+
+export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
+  in?: Date[] | string[] | Prisma.ListDateTimeFieldRefInput<$PrismaModel>
+  notIn?: Date[] | string[] | Prisma.ListDateTimeFieldRefInput<$PrismaModel>
+  lt?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
+  lte?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
+  gt?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
+  gte?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedDateTimeFilter<$PrismaModel>
+  _max?: Prisma.NestedDateTimeFilter<$PrismaModel>
 }
 
 

@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.1.0",
   "engineVersion": "ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba",
   "activeProvider": "postgresql",
-  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"../app/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel User {\n  id    String @id @unique\n  email String @unique\n\n  stripeCustomerId       String?   @unique @map(\"stripe_customer_id\")\n  stripeSubscriptionId   String?   @unique @map(\"stripe_subscription_id\")\n  stripePriceId          String?   @map(\"stripe_price_id\")\n  stripeCurrentPeriodEnd DateTime? @map(\"stripe_current_period_end\")\n}\n",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"../app/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel User {\n  id    String @id @unique\n  email String @unique\n\n  File File[]\n\n  stripeCustomerId       String?   @unique @map(\"stripe_customer_id\")\n  stripeSubscriptionId   String?   @unique @map(\"stripe_subscription_id\")\n  stripePriceId          String?   @map(\"stripe_price_id\")\n  stripeCurrentPeriodEnd DateTime? @map(\"stripe_current_period_end\")\n}\n\nenum UploadStatus {\n  PENDING\n  PROCESSING\n  FAILED\n  SUCCESS\n}\n\nmodel File {\n  id   String @id @unique @default(cuid())\n  name String\n\n  uploadStatus UploadStatus @default(PENDING)\n\n  url String\n  key String\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  User   User   @relation(fields: [userId], references: [id])\n  userId String\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -28,7 +28,7 @@ const config: runtime.GetPrismaClientConfig = {
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"stripeCustomerId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"stripe_customer_id\"},{\"name\":\"stripeSubscriptionId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"stripe_subscription_id\"},{\"name\":\"stripePriceId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"stripe_price_id\"},{\"name\":\"stripeCurrentPeriodEnd\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"stripe_current_period_end\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"File\",\"kind\":\"object\",\"type\":\"File\",\"relationName\":\"FileToUser\"},{\"name\":\"stripeCustomerId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"stripe_customer_id\"},{\"name\":\"stripeSubscriptionId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"stripe_subscription_id\"},{\"name\":\"stripePriceId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"stripe_price_id\"},{\"name\":\"stripeCurrentPeriodEnd\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"stripe_current_period_end\"}],\"dbName\":null},\"File\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"uploadStatus\",\"kind\":\"enum\",\"type\":\"UploadStatus\"},{\"name\":\"url\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"key\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"User\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"FileToUser\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
   const { Buffer } = await import('node:buffer')
@@ -183,6 +183,16 @@ export interface PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.file`: Exposes CRUD operations for the **File** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Files
+    * const files = await prisma.file.findMany()
+    * ```
+    */
+  get file(): Prisma.FileDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
 export function getPrismaClientClass(): PrismaClientConstructor {

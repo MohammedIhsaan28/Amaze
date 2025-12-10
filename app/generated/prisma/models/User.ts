@@ -190,6 +190,7 @@ export type UserWhereInput = {
   stripeSubscriptionId?: Prisma.StringNullableFilter<"User"> | string | null
   stripePriceId?: Prisma.StringNullableFilter<"User"> | string | null
   stripeCurrentPeriodEnd?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  File?: Prisma.FileListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -199,6 +200,7 @@ export type UserOrderByWithRelationInput = {
   stripeSubscriptionId?: Prisma.SortOrderInput | Prisma.SortOrder
   stripePriceId?: Prisma.SortOrderInput | Prisma.SortOrder
   stripeCurrentPeriodEnd?: Prisma.SortOrderInput | Prisma.SortOrder
+  File?: Prisma.FileOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -211,6 +213,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   stripePriceId?: Prisma.StringNullableFilter<"User"> | string | null
   stripeCurrentPeriodEnd?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  File?: Prisma.FileListRelationFilter
 }, "id" | "id" | "email" | "stripeCustomerId" | "stripeSubscriptionId">
 
 export type UserOrderByWithAggregationInput = {
@@ -244,6 +247,7 @@ export type UserCreateInput = {
   stripeSubscriptionId?: string | null
   stripePriceId?: string | null
   stripeCurrentPeriodEnd?: Date | string | null
+  File?: Prisma.FileCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -253,6 +257,7 @@ export type UserUncheckedCreateInput = {
   stripeSubscriptionId?: string | null
   stripePriceId?: string | null
   stripeCurrentPeriodEnd?: Date | string | null
+  File?: Prisma.FileUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -262,6 +267,7 @@ export type UserUpdateInput = {
   stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   stripePriceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   stripeCurrentPeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  File?: Prisma.FileUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -271,6 +277,7 @@ export type UserUncheckedUpdateInput = {
   stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   stripePriceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   stripeCurrentPeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  File?: Prisma.FileUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -327,6 +334,11 @@ export type UserMinOrderByAggregateInput = {
   stripeCurrentPeriodEnd?: Prisma.SortOrder
 }
 
+export type UserScalarRelationFilter = {
+  is?: Prisma.UserWhereInput
+  isNot?: Prisma.UserWhereInput
+}
+
 export type StringFieldUpdateOperationsInput = {
   set?: string
 }
@@ -339,6 +351,101 @@ export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null
 }
 
+export type UserCreateNestedOneWithoutFileInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFileInput, Prisma.UserUncheckedCreateWithoutFileInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFileInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutFileNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFileInput, Prisma.UserUncheckedCreateWithoutFileInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFileInput
+  upsert?: Prisma.UserUpsertWithoutFileInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutFileInput, Prisma.UserUpdateWithoutFileInput>, Prisma.UserUncheckedUpdateWithoutFileInput>
+}
+
+export type UserCreateWithoutFileInput = {
+  id: string
+  email: string
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripePriceId?: string | null
+  stripeCurrentPeriodEnd?: Date | string | null
+}
+
+export type UserUncheckedCreateWithoutFileInput = {
+  id: string
+  email: string
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripePriceId?: string | null
+  stripeCurrentPeriodEnd?: Date | string | null
+}
+
+export type UserCreateOrConnectWithoutFileInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutFileInput, Prisma.UserUncheckedCreateWithoutFileInput>
+}
+
+export type UserUpsertWithoutFileInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutFileInput, Prisma.UserUncheckedUpdateWithoutFileInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutFileInput, Prisma.UserUncheckedCreateWithoutFileInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutFileInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutFileInput, Prisma.UserUncheckedUpdateWithoutFileInput>
+}
+
+export type UserUpdateWithoutFileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripePriceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeCurrentPeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+export type UserUncheckedUpdateWithoutFileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripePriceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeCurrentPeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+
+/**
+ * Count Type UserCountOutputType
+ */
+
+export type UserCountOutputType = {
+  File: number
+}
+
+export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  File?: boolean | UserCountOutputTypeCountFileArgs
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserCountOutputType
+   */
+  select?: Prisma.UserCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountFileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.FileWhereInput
+}
 
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -348,6 +455,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   stripeSubscriptionId?: boolean
   stripePriceId?: boolean
   stripeCurrentPeriodEnd?: boolean
+  File?: boolean | Prisma.User$FileArgs<ExtArgs>
+  _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -378,10 +487,18 @@ export type UserSelectScalar = {
 }
 
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "stripeCustomerId" | "stripeSubscriptionId" | "stripePriceId" | "stripeCurrentPeriodEnd", ExtArgs["result"]["user"]>
+export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  File?: boolean | Prisma.User$FileArgs<ExtArgs>
+  _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
-  objects: {}
+  objects: {
+    File: Prisma.$FilePayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     email: string
@@ -783,6 +900,7 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  File<T extends Prisma.User$FileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$FileArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -835,6 +953,10 @@ export type UserFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where: Prisma.UserWhereUniqueInput
@@ -853,6 +975,10 @@ export type UserFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where: Prisma.UserWhereUniqueInput
@@ -870,6 +996,10 @@ export type UserFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * Filter, which User to fetch.
    */
@@ -919,6 +1049,10 @@ export type UserFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where?: Prisma.UserWhereInput
@@ -967,6 +1101,10 @@ export type UserFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which Users to fetch.
    */
   where?: Prisma.UserWhereInput
@@ -1009,6 +1147,10 @@ export type UserCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * The data needed to create a User.
    */
@@ -1057,6 +1199,10 @@ export type UserUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * The data needed to update a User.
    */
@@ -1124,6 +1270,10 @@ export type UserUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * The filter to search for the User to update in case it exists.
    */
   where: Prisma.UserWhereUniqueInput
@@ -1150,6 +1300,10 @@ export type UserDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter which User to delete.
    */
   where: Prisma.UserWhereUniqueInput
@@ -1170,6 +1324,30 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
+ * User.File
+ */
+export type User$FileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the File
+   */
+  select?: Prisma.FileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the File
+   */
+  omit?: Prisma.FileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FileInclude<ExtArgs> | null
+  where?: Prisma.FileWhereInput
+  orderBy?: Prisma.FileOrderByWithRelationInput | Prisma.FileOrderByWithRelationInput[]
+  cursor?: Prisma.FileWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.FileScalarFieldEnum | Prisma.FileScalarFieldEnum[]
+}
+
+/**
  * User without action
  */
 export type UserDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1181,4 +1359,8 @@ export type UserDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
 }
